@@ -1,0 +1,8 @@
+<div class="pagination" *ngIf="displayButtons">
+  <button class="btn btn-primary" (click)="previousPage()" [disabled]="disablePrevious">
+    Previous
+  </button>
+  <button class="btn btn-primary" (click)="nextPage()" [disabled]="disableNext">
+    Next
+  </button>
+</div>

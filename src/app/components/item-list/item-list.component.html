@@ -1,0 +1,63 @@
+<div class="container-fluid">
+  <img class="loadingImage" *ngIf="loadingPokemons" src="../../../assets/images/favicon.png" alt="loading pokemons icon">
+  <!--Messages to display when the application loads (start)-->
+  <div class="message">
+    <p *ngIf="message">{{ message }}</p>
+    <br>
+    <p *ngIf="loadingPokemons">
+      <i class="fa fa-spinner" aria-hidden="true"></i>&nbsp;{{ fetchMsg }}
+    </p>
+  </div>
+  <!--Messages(end)-->
+  <!--To display 20 Pokemon cards (start)-->
+  <div class="pokemon">
+    <div *ngFor="let pokemon of pokemonsData" (click)="openModal(pokemon)" data-toggle="modal" data-target="#myModal">
+      <div class="pokemon-card">
+        <div class="pokemon-name">
+          {{ pokemon.name }}
+        </div>
+        <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/{{pokemon.id}}.png" alt="{{ pokemon.name }}">
+        <div class="pokemon-details">
+          <table class="details-table">
+            <tr>
+              <td>
+                <strong>Height: </strong>
+              </td>
+              <td>{{ pokemon.height }}</td>
+            </tr>
+            <tr>
+              <td>
+                <strong>Type: </strong>
+              </td>
+              <td>
+                <span *ngFor="let typeDetails of pokemon.types">
+                  {{ typeDetails.type.name }}
+                  <br>
+                </span>
+              </td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>  
+    <!--Child component to display navigation buttons using child component (start)-->
+   <app-pagination [navigate] = pageNavigation
+                   [showButtons]= showButtons
+                   [checkButtonsOnLoad]= checkButtons
+                   (buttonClicked)='onButtonClick($event)' >
+    </app-pagination>
+    <!--Child component to display navigation buttons (end)-->
+  <!--To display 20 Pokemon cards (end)-->
+</div>
+<!--Modal to display more details of each pokemon using child component(start)-->
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <!-- Modal content-->
+    <div class="modal-content">
+      <!--Child component to display item details-->
+      <app-item-details></app-item-details>
+    </div>
+  </div>
+</div>
+<!--Modal to display more details of each pokemon (end)-->

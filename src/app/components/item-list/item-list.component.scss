@@ -1,0 +1,65 @@
+$lightRed: #b39595;
+$offWhite: #eeeeee;
+
+.message {
+  text-align: center;
+  padding: 20px;
+  font-size: 20px;
+  p:nth-child(1) {
+    font-weight: bold;
+    color: $lightRed;
+  }
+}
+
+.pokemon {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  .pokemon-card {
+    flex-grow: 1;
+    flex-shrink: 1;
+    min-width: 200px;
+    min-height: 250px;
+    background: $offWhite;
+    -webkit-box-shadow: 5px 5px 5px;
+    box-shadow: 5px 5px 5px;
+    cursor: pointer;
+    margin: 15px;
+    .pokemon-name {
+      text-align: center;
+      text-transform: uppercase;
+      font-weight: bold;
+      padding: 10px;
+      background: $lightRed;
+    }
+    img {
+      margin: 0 auto;
+      display: block;
+    }
+    table {
+      margin: 0 auto;
+    }
+    td {
+      padding: 10px;
+    }
+  }
+}
+
+.loadingImage {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  border-radius: 13px;
+  animation: loading 1s linear infinite;
+}
+
+/* Keyframes */
+
+@keyframes loading {
+  from {
+    transform: rotateZ(0deg)
+  }
+  to {
+    transform: rotateZ(360deg)
+  }
+}

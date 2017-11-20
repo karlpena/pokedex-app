@@ -1,0 +1,24 @@
+$lightBlue: rgb(156, 156, 193);
+
+.modalTitle {
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.modalBody {
+    text-align: center;
+}
+.more-details {
+    table {
+        margin: 0 auto;
+    }
+    th {
+        background: $lightBlue;
+    }
+    th, td {
+        border: 2px solid $lightBlue;
+        border-collapse: collapse;
+        padding: 10px;
+    }
+}
+

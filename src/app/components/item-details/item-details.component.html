@@ -1,0 +1,60 @@
+<!--Modal Header (start)-->
+<div class="modal-header">
+  <span class="modalTitle">{{ pokemonDetails?.name }}</span>
+  <button type="button" class="close" data-dismiss="modal">&times;</button>
+</div>
+<!--Modal Header (end)-->
+<!--Modal body (start)-->
+<div class="modal-body modalBody">
+  <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/{{pokemonDetails?.id}}.png" alt="{{ pokemonDetails?.name }}">
+  <div class="more-details">
+    <table>
+      <tr>
+        <th colspan="2">
+          Details
+        </th>
+      </tr>
+      <tr>
+        <td>
+          <strong>Weight: </strong>
+        </td>
+        <td>{{ pokemonDetails?.weight }}</td>
+      </tr>
+      <tr>
+        <td>
+          <strong>Abilities: </strong>
+        </td>
+        <td>
+          <span *ngFor="let abilityDetails of pokemonDetails?.abilities">
+            {{ abilityDetails?.ability?.name }}
+            <br>
+          </span>
+        </td>
+      </tr>
+      <br>
+      <span>
+        <button class="btn btn-primary" (click)="getAbilities()" [disabled]="disableModalButton">Click to view details of abilities.</button>
+      </span>
+      <br>
+      <br>
+      <span *ngIf="modalFetchMsg">
+        <i class="fa fa-spinner" aria-hidden="true"></i>&nbsp;Fetching abilities details...</span>
+      <tr *ngIf="showHeadings">
+        <th>Ability Name</th>
+        <th>Ability Description</th>
+      </tr>
+      <tr *ngFor="let ability of abilitiesData">
+        <td> {{ ability?.name }} </td>
+        <td *ngFor="let effectDetails of ability.effect_entries">
+          {{ effectDetails?.short_effect }}
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
+<!--Modal body (end)-->
+<!--Modal footer (start)-->
+<div class="modal-footer">
+  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+</div>
+<!--Modal footer (end)-->

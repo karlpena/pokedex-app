@@ -1,0 +1,15 @@
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 15px;
+  button {
+    margin: 15px;
+    &:disabled {
+      cursor: not-allowed;
+      &:enabled {
+        cursor: pointer;
+      }
+    }
+  }
+}
